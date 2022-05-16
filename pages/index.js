@@ -1,10 +1,13 @@
 import Head from 'next/head';
+import Clock from '../components/Clock.jsx';
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
   const [edit, setEdit] = useState();
+  // const [links, setLinks] = useState([]);
+
   const links = [
     { name: 'link 1', url: 'https://google.ca' },
     { name: 'link 1', url: 'https://google.ca' },
@@ -24,18 +27,24 @@ export default function Home() {
     { name: 'link 1', url: 'https://google.ca' },
   ];
 
-  const linkList = links.map((link) => {
+  const linkList = links.map((link, key) => {
     const { name, url, id } = link;
     const linkName = name;
     let safeLink = ``;
     url.includes('http') ? (safeLink = `${url}`) : (safeLink = `https://${url}`);
 
     return (
-      <li className={styles.link__chip}>
+      <li key={key} className={styles.link__chip}>
         <a href={url}>{name}</a>
       </li>
     );
   });
+
+  const reset = (e) => {
+    setTimeout(() => {
+      e.target.reset();
+    }, 1);
+  };
 
   return (
     <div className={styles.container}>
@@ -46,6 +55,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Clock />
         <div>
           <section className={styles.content__box}>
             <h1 className={styles.title}>ケツ &gt;</h1>
@@ -54,7 +64,7 @@ export default function Home() {
             </section>
           </section>
           <section>
-            <label htmlFor="file-input">
+            <label htmlFor="file__input">
               <img id="img" src={'images/stars.gif'} alt="user_image" />
             </label>
 
@@ -67,7 +77,6 @@ export default function Home() {
         </div>
         <form
           id={styles.search}
-          name="form1"
           action="https://duckduckgo.com/?q="
           target="_blank"
           method="get"
