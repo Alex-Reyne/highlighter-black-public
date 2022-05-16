@@ -25,17 +25,6 @@
 
     margin-top: 0.25rem;
     width: 100%;
-
-    input {
-      flex-grow: 1;
-      border: 2px solid $pink;
-      color: var(--white);
-      background-color: $black;
-
-      &:focus {
-        outline: none;
-      }
-    }
   }
 
   #file__input {
