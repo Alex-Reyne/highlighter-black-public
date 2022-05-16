@@ -2,6 +2,45 @@
 
 .main {
   color: $white;
+
+  width: 35vw;
+
+  div {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      margin-left: 0.25rem;
+      padding: 2px;
+      background-color: $pink;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      max-width: 10rem;
+    }
+  }
+
+  #search {
+    display: flex;
+
+    margin-top: 0.25rem;
+    width: 100%;
+
+    input {
+      flex-grow: 1;
+      border: 2px solid $pink;
+      color: var(--white);
+      background-color: $black;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  #file__input {
+    display: none;
+  }
 }
 
 .container {
@@ -21,6 +60,11 @@
   width: 40rem;
   background-color: $slate;
   border: 2px solid $pink;
+
+  h1 {
+    margin: 0 0 0rem 0;
+    color: $pink;
+  }
 }
 
 .link__list {
@@ -36,15 +80,15 @@
   align-items: left;
   align-content: center;
   max-height: 140px; /* Limit height */
-}
 
-.link__list > a {
-  text-decoration: none;
-  color: $white;
-}
+  a {
+    text-decoration: none;
+    color: $white;
+  }
 
-.link__list > a:visited {
-  color: $white;
+  &:visited {
+    color: $white;
+  }
 }
 
 .link__chip {
@@ -56,11 +100,11 @@
   margin: 0.25rem 0.25rem;
   min-width: 4rem;
   cursor: pointer;
-}
 
-.link__chip:hover {
-  background-color: $pink;
-  color: $black;
+  &:hover {
+    background-color: $pink;
+    color: $black;
+  }
 }
 
 .footer {
