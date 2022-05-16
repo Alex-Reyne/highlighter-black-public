@@ -1,6 +1,6 @@
 import styles from '../styles/AddForm.module.scss';
 
-export default function AddForm({ setAdd, addForm, setAddForm }) {
+export default function AddForm({ setAdd, addForm, setAddForm, newLink, setLinks }) {
   return (
     <form className={styles.linkform}>
       <div>
@@ -37,6 +37,7 @@ export default function AddForm({ setAdd, addForm, setAddForm }) {
           Add
         </button>
         <button
+          type="button"
           onClick={(e) => {
             setAddForm({});
             setAdd(false);
