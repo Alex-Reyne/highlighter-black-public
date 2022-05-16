@@ -58,12 +58,15 @@
 
   height: 20rem;
   width: 40rem;
+  font-size: 0.75rem;
   background-color: $slate;
   border: 2px solid $pink;
 
   h1 {
     margin: 0 0 0rem 0;
     color: $pink;
+
+    font-size: 1.25rem;
   }
 }
 
@@ -109,7 +112,7 @@
 
 .footer {
   text-align: center;
-  background-color: $pink;
+  color: $pink;
 
   width: 100%;
   bottom: 0;
