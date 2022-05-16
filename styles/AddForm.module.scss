@@ -1,0 +1,11 @@
+@import 'variables.scss';
+
+.linkform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    margin: 0 0.25rem 0.5rem 0.25rem;
+  }
+}
