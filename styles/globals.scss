@@ -22,3 +22,30 @@ a {
 * {
   box-sizing: border-box;
 }
+
+button {
+  border: none;
+  color: $pink;
+  background-color: $black;
+  padding: 0.25rem;
+  margin: 0 0.25rem 0 0.25rem;
+  font-family: $lato;
+  font-weight: bolder;
+  min-width: 8rem;
+  border-radius: 0.25rem;
+
+  &:hover {
+    background-color: $blackOpaque;
+  }
+}
+
+input {
+  flex-grow: 1;
+  border: 2px solid $pink;
+  color: $white;
+  background-color: $black;
+  padding: 0.15rem;
+  &:focus {
+    outline: none;
+  }
+}
