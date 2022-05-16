@@ -1,31 +1,27 @@
 import Head from 'next/head';
 import Clock from '../components/Clock.jsx';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.scss';
+import AddForm from '../components/AddForm.jsx';
 
 export default function Home() {
   const [edit, setEdit] = useState();
-  // const [links, setLinks] = useState([]);
+  const [add, setAdd] = useState(false);
+  const [addForm, setAddForm] = useState({});
+  const [links, setLinks] = useState([]);
+  const [image, setImage] = useState([]);
 
-  const links = [
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-    { name: 'link 1', url: 'https://google.ca' },
-  ];
+  useEffect(() => {
+    if (localStorage.getItem('links')) {
+      const linkArray = JSON.parse(localStorage.getItem('links'));
+      setLinks(linkArray);
+    }
+
+    if (localStorage.getItem('image')) {
+      setImage(localStorage.getItem('image'));
+    }
+  }, []);
 
   const linkList = links.map((link, key) => {
     const { name, url, id } = link;
@@ -62,6 +58,8 @@ export default function Home() {
             <section className={styles.links}>
               <ul className={styles.link__list}>{linkList}</ul>
             </section>
+            {add === false && <button onClick={(e) => setAdd(true)}>New Link</button>}
+            {add === true && <AddForm setAdd={setAdd} addForm={addForm} setAddForm={setAddForm} />}
           </section>
           <section>
             <label htmlFor="file__input">
