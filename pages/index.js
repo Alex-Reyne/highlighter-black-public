@@ -23,6 +23,15 @@ export default function Home() {
     }
   }, []);
 
+  const newLink = (setLinks, addForm) => {
+    setLinks((prev) => {
+      const newLinks = [...prev, addForm];
+      const storage = JSON.stringify(newLinks);
+      localStorage.setItem('links', storage);
+      return newLinks;
+    });
+  };
+
   const linkList = links.map((link, key) => {
     const { name, url, id } = link;
     const linkName = name;
@@ -59,7 +68,15 @@ export default function Home() {
               <ul className={styles.link__list}>{linkList}</ul>
             </section>
             {add === false && <button onClick={(e) => setAdd(true)}>New Link</button>}
-            {add === true && <AddForm setAdd={setAdd} addForm={addForm} setAddForm={setAddForm} />}
+            {add === true && (
+              <AddForm
+                setAdd={setAdd}
+                addForm={addForm}
+                setAddForm={setAddForm}
+                newLink={newLink}
+                setLinks={setLinks}
+              />
+            )}
           </section>
           <section>
             <label htmlFor="file__input">
