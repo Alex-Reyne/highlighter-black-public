@@ -49,3 +49,12 @@ input {
     outline: none;
   }
 }
+
+#edit {
+  position: absolute;
+  z-index: 999;
+  right: 1rem;
+  bottom: 0rem;
+  cursor: pointer;
+  color: $pink;
+}
