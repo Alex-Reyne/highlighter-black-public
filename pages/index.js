@@ -6,13 +6,16 @@ import styles from '../styles/Home.module.scss';
 import AddForm from '../components/AddForm.jsx';
 
 export default function Home() {
-  const [edit, setEdit] = useState();
+  const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
   const [addForm, setAddForm] = useState({});
   const [links, setLinks] = useState([]);
+  const [error, setError] = useState(false);
   const [image, setImage] = useState([]);
 
   useEffect(() => {
+    setError(false);
+
     if (localStorage.getItem('links')) {
       const linkArray = JSON.parse(localStorage.getItem('links'));
       setLinks(linkArray);
@@ -24,24 +27,49 @@ export default function Home() {
   }, []);
 
   const newLink = (setLinks, addForm) => {
-    setLinks((prev) => {
-      const newLinks = [...prev, addForm];
-      const storage = JSON.stringify(newLinks);
-      localStorage.setItem('links', storage);
-      return newLinks;
-    });
+    console.log(links.length);
+    links.length >= 16 ? setError(true) : null;
+
+    if (!error) {
+      setLinks((prev) => {
+        const newLinks = [...prev, addForm];
+        const storage = JSON.stringify(newLinks);
+        localStorage.setItem('links', storage);
+        setError(false);
+        return newLinks;
+      });
+    }
+
+    return;
   };
 
   const linkList = links.map((link, key) => {
-    const { name, url, id } = link;
-    const linkName = name;
+    const { name, url } = link;
     let safeLink = ``;
     url.includes('http') ? (safeLink = `${url}`) : (safeLink = `https://${url}`);
 
+    const deleteLink = () => {
+      setLinks((prev) => {
+        const newLinkList = links.filter((link) => link.name !== name);
+        const storage = JSON.stringify(newLinkList);
+        localStorage.setItem('links', storage);
+        return newLinkList;
+      });
+    };
+
     return (
-      <li key={key} className={styles.link__chip}>
-        <a href={url}>{name}</a>
-      </li>
+      <>
+        {edit === false && (
+          <li key={key} className={styles.link__chip}>
+            <a href={safeLink}>{name}</a>
+          </li>
+        )}
+        {edit === true && (
+          <li key={key} className={styles.link__chip}>
+            <a onClick={deleteLink}>{name} x</a>
+          </li>
+        )}
+      </>
     );
   });
 
@@ -67,7 +95,14 @@ export default function Home() {
             <section className={styles.links}>
               <ul className={styles.link__list}>{linkList}</ul>
             </section>
-            {add === false && <button onClick={(e) => setAdd(true)}>New Link</button>}
+            {add === false && edit === false && (
+              <button onClick={(e) => setAdd(true)}>New Link</button>
+            )}
+            {edit === true && add === false && (
+              <button id="done" onClick={(e) => setEdit(false)}>
+                Done
+              </button>
+            )}
             {add === true && (
               <AddForm
                 setAdd={setAdd}
@@ -77,7 +112,13 @@ export default function Home() {
                 setLinks={setLinks}
               />
             )}
+            {add === false && (
+              <p id="edit" onClick={(e) => setEdit(true)}>
+                Edit Links
+              </p>
+            )}
           </section>
+
           <section>
             <label htmlFor="file__input">
               <img id="img" src={'images/stars.gif'} alt="user_image" />
@@ -90,6 +131,7 @@ export default function Home() {
             />
           </section>
         </div>
+
         <form
           id={styles.search}
           action="https://duckduckgo.com/?q="
