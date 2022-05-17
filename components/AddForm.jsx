@@ -6,7 +6,7 @@ export default function AddForm({ setAdd, addForm, setAddForm, newLink, setLinks
       <div>
         <input
           type="text"
-          value={addForm.name}
+          value={addForm.name || ''}
           placeholder="name"
           onChange={(e) => {
             setAddForm((prev) =>
@@ -16,7 +16,7 @@ export default function AddForm({ setAdd, addForm, setAddForm, newLink, setLinks
         />
         <input
           type="text"
-          value={addForm.url}
+          value={addForm.url || ''}
           placeholder="url"
           onChange={(e) => {
             setAddForm((prev) =>
