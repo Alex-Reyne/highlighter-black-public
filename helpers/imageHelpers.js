@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function submitImage(e, setImage) {
+async function submitImage(e, setImage, setLoading) {
   const data = new FormData();
   data.append('image', e.target.files[0]);
 
@@ -18,6 +18,7 @@ async function submitImage(e, setImage) {
     .then((url) => {
       setImage(url);
       localStorage.setItem('image', url);
+      setLoading(false);
     })
     .catch((e) => console.log(e));
 }

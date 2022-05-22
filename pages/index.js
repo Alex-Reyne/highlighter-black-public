@@ -29,7 +29,7 @@ export default function Home() {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, [image]);
+  }, []);
 
   const newLink = (setLinks, addForm) => {
     console.log(links.length);
@@ -136,7 +136,8 @@ export default function Home() {
                   id="file__input"
                   type="file"
                   onChange={(e) => {
-                    submitImage(e, setImage);
+                    setLoading(true);
+                    submitImage(e, setImage, setLoading);
                   }}
                 />
               </section>
