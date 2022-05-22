@@ -17,6 +17,7 @@
       object-fit: cover;
       overflow: hidden;
       max-width: 10rem;
+      cursor: pointer;
     }
   }
 
@@ -25,10 +26,6 @@
 
     margin-top: 0.25rem;
     width: 100%;
-  }
-
-  #file__input {
-    display: none;
   }
 }
 
