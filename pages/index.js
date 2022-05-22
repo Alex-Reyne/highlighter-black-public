@@ -129,7 +129,7 @@ export default function Home() {
 
               <section>
                 <label htmlFor="file__input">
-                  <img id="img" src={image || 'images/stars.gif'} alt="user_image" />
+                  <img id="img" src={image || 'images/moon.webp'} alt="user_image" />
                 </label>
 
                 <input
