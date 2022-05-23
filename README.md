@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<head>
+<meta name="description" content="Git Repo - Highlighter Black Start Page" />
+</head>
 
-## Getting Started
+# Highlighter Black
 
-First, run the development server:
+Highlighter Black is a personal custom start/new-tab page built as a chrome extension. You can upload custom images/gifs to play in the image box and add or delete custom links in the main content container. It also features a Duck Duck Go search bar with a slim, unintrusive design.
 
-```bash
-npm run dev
-# or
-yarn dev
+---
+
+Highlighter Black uses Next.js and SASS for the frontend while utilizing the browsers local storage to store links and images. This was accomplished by using the IMGBB API to upload images and retrieve the link to store in the browsers local storage.
+
+---
+
+You can view a live demo version that's been deployed to Vercel here [Highlighter Black](https://highlighter-black.vercel.app/)
+
+The demo resets the user image and links in the database every 5 minutes to keep it clean for future visitors so don't worry about messing anything up.
+
+# Preview
+
+https://user-images.githubusercontent.com/85032662/154366490-53c32ccd-0eb6-47e6-a03a-63c28a6c978c.mp4
+
+# Tech Stack:
+
+## Frontend
+
+```
+React.js
+Next.js
+SASS
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# How and Why
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+At first, this started out as a simple refactoring of some really old HTML and CSS that I had been using as a start page for a couple of years. I wanted to re-create what I had and make it customizable without having to edit the code directly.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Soon after starting, I realized that I wanted to turn this into a learning experience so I took on Typescript for the Client and Server. Though this was a painful learning experience, I learned a lot and I'm happy to have built something that I can use for years to come.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Originally I wasn't going to post it for the public to view and play with but after realizing how much fun some of my coworkers were having with it I decided to deploy a public branch that everyone could use without having to worry about pesky authentication.
