@@ -89,7 +89,11 @@ export default function Home() {
       <Head>
         <title>Highlighter Black</title>
         <meta name="description" content="A customizable start page for chrome" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="./images/fav.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Highlighter Black Start Page" />
+        <link rel="apple-touch-icon" href="./images/fav.png" />
       </Head>
 
       <main className={styles.main}>
