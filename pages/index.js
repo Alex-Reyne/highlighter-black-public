@@ -127,7 +127,7 @@ export default function Home() {
                 )}
               </section>
 
-              <section>
+              <section className={styles.image__upload}>
                 <label htmlFor="file__input">
                   <img id="img" src={image || 'images/moon.webp'} alt="user_image" />
                 </label>

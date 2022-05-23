@@ -72,6 +72,7 @@ input {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
   }
 }
+
 #spin::before {
   animation: 1.5s linear infinite spinner;
   animation-play-state: inherit;
