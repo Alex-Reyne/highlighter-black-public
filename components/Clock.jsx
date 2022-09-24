@@ -10,7 +10,7 @@ export default function Clock() {
     let date = new Date();
 
     const dateString = `
-    ${days[date.getDay()]} ${date.getDay()}/${date.getMonth()}/${date.getFullYear()}
+    ${days[date.getDay()]} ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}
     ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}
   `;
 
